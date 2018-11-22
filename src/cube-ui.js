@@ -39,13 +39,13 @@ import {
     // Drawer,
     // ImagePreview,
     // // scroll
-    // Scroll,
-    // Slide,
-    // IndexList,
-    // Swipe,
-    // Sticky,
-    // ScrollNav,
-    // ScrollNavBar
+    Scroll,
+    Slide,
+    IndexList,
+    Swipe,
+    Sticky,
+    ScrollNav,
+    ScrollNavBar
 } from 'cube-ui'
 
 Vue.use(Button)
@@ -77,10 +77,10 @@ Vue.use(Picker)
 // Vue.use(ActionSheet)
 // Vue.use(Drawer)
 // Vue.use(ImagePreview)
-// Vue.use(Scroll)
-// Vue.use(Slide)
-// Vue.use(IndexList)
-// Vue.use(Swipe)
-// Vue.use(Sticky)
-// Vue.use(ScrollNav)
-// Vue.use(ScrollNavBar)
+Vue.use(Scroll)
+Vue.use(Slide)
+Vue.use(IndexList)
+Vue.use(Swipe)
+Vue.use(Sticky)
+Vue.use(ScrollNav)
+Vue.use(ScrollNavBar)
