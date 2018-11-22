@@ -11,7 +11,7 @@ import {
     // Loading,
     // Tip,
     // Toolbar,
-    // TabBar,
+    TabBar,
     // TabPanels,
     // // form
     // Checkbox,
@@ -40,19 +40,19 @@ import {
     // ImagePreview,
     // // scroll
     Scroll,
-    Slide,
-    IndexList,
-    Swipe,
-    Sticky,
-    ScrollNav,
-    ScrollNavBar
+    // Slide,
+    // IndexList,
+    // Swipe,
+    // Sticky,
+    // ScrollNav,
+    // ScrollNavBar
 } from 'cube-ui'
 
 Vue.use(Button)
 // Vue.use(Loading)
 // Vue.use(Tip)
 // Vue.use(Toolbar)
-// Vue.use(TabBar)
+Vue.use(TabBar)
 // Vue.use(TabPanels)
 // Vue.use(Checkbox)
 Vue.use(CheckboxGroup)
@@ -78,9 +78,9 @@ Vue.use(Picker)
 // Vue.use(Drawer)
 // Vue.use(ImagePreview)
 Vue.use(Scroll)
-Vue.use(Slide)
-Vue.use(IndexList)
-Vue.use(Swipe)
-Vue.use(Sticky)
-Vue.use(ScrollNav)
-Vue.use(ScrollNavBar)
+// Vue.use(Slide)
+// Vue.use(IndexList)
+// Vue.use(Swipe)
+// Vue.use(Sticky)
+// Vue.use(ScrollNav)
+// Vue.use(ScrollNavBar)
