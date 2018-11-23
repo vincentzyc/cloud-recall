@@ -93,6 +93,7 @@ html {
   height: 52px;
   border: 1px solid #dedede;
   border-radius: 100%;
-  background: #fff url("./assets//img/add.png") no-repeat center center/36px 36px;
+  background: #fff url("./assets//img/add.png") no-repeat center center/36px
+    36px;
 }
 </style>
