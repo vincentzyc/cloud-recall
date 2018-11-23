@@ -2,8 +2,10 @@
     <div id="app">
         <div class="app-content">
             <RecallList />
-            <footer class="footer">
-                <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="clickHandler"></cube-tab-bar>
+            <footer class="flex footer align-middle">
+                <div style="width:100%">
+                    <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="clickHandler"></cube-tab-bar>
+                </div>
                 <div class="add-recall"></div>
             </footer>
         </div>
