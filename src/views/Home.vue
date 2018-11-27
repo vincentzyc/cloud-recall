@@ -1,18 +1,24 @@
 <template>
-  <cube-page type="home-view" title="HOME">
+  <base-page
+    type="home-view"
+    title="HOME"
+  >
     <div slot="content">
       <div class="text-center">
-        <img alt="Vue logo" src="../assets/img/logo.png">
+        <img
+          alt="Vue logo"
+          src="../assets/img/logo.png"
+        >
       </div>
       <HelloWorld />
     </div>
-    <cube-view></cube-view>
-  </cube-page>
+    <base-view></base-view>
+  </base-page>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import HelloWorld from "@/components/hello-world.vue";
 
 export default {
   name: "home",

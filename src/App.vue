@@ -4,7 +4,11 @@
       <RecallList />
       <footer class="flex footer align-middle">
         <div style="width:100%">
-          <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="clickHandler"></cube-tab-bar>
+          <cube-tab-bar
+            v-model="selectedLabelDefault"
+            :data="tabs"
+            @click="clickHandler"
+          ></cube-tab-bar>
         </div>
         <div class="add-recall"></div>
       </footer>
@@ -13,7 +17,7 @@
 </template>
 <script>
 // @ is an alias to /src
-import RecallList from "@/components/RecallList.vue";
+import RecallList from "@/components/recall-list.vue";
 export default {
   name: "app",
   data() {
