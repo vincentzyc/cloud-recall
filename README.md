@@ -1,4 +1,4 @@
-# recall-today
+# Cloud-Recall
 
 ## Project setup
 ```
