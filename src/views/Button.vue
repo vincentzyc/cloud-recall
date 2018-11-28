@@ -20,19 +20,19 @@
 
 <script type="text/ecmascript-6">
 export default {
-  data() {
+  data () {
     return {
       buttonStyle: ["inline", "outline", "primary"]
     };
   },
   computed: {
-    inlineStyle() {
+    inlineStyle () {
       return this.buttonStyle.indexOf("inline") >= 0;
     },
-    outlineStyle() {
+    outlineStyle () {
       return this.buttonStyle.indexOf("outline") >= 0;
     },
-    primaryStyle() {
+    primaryStyle () {
       return this.buttonStyle.indexOf("primary") >= 0;
     }
   }

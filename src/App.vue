@@ -1,14 +1,10 @@
 <template>
   <div id="app">
     <div class="app-content">
-      <RecallList />
+      <RecallList/>
       <footer class="flex footer align-middle">
         <div style="width:100%">
-          <cube-tab-bar
-            v-model="selectedLabelDefault"
-            :data="tabs"
-            @click="clickHandler"
-          ></cube-tab-bar>
+          <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="clickHandler"></cube-tab-bar>
         </div>
         <div class="add-recall"></div>
       </footer>
@@ -20,7 +16,7 @@
 import RecallList from "@/components/recall-list.vue";
 export default {
   name: "app",
-  data() {
+  data () {
     return {
       tab_active: "recall",
       selectedLabelDefault: "我的回忆",
@@ -40,7 +36,7 @@ export default {
     RecallList
   },
   methods: {
-    clickHandler(label) {
+    clickHandler (label) {
       // if you clicked home tab, then print 'Home'
       console.log(label);
     }

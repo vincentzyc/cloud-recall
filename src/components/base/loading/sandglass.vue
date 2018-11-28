@@ -1,11 +1,6 @@
 <template>
   <div class="sandglass-wrap">
-    <svg
-      version="1.1"
-      viewBox="131.623 175.5 120 160"
-      preserveAspectRatio="xMinYMin meet"
-      class="timer"
-    >
+    <svg version="1.1" viewBox="131.623 175.5 120 160" preserveAspectRatio="xMinYMin meet" class="timer">
       <path
         fill="#FFFFFF"
         d="M212.922,255.45l36.855-64.492c1.742-3.069,1.742-6.836-0.037-9.896c-1.783-3.06-5.037-4.938-8.581-4.938

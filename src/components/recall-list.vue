@@ -1,33 +1,24 @@
 <template>
   <div class="recall-list">
     <cube-scroll ref="scroll">
-      <ul
-        v-for="list in recallList"
-        :key="list.date"
-        class="date-item"
-      >
+      <ul v-for="list in recallList" :key="list.date" class="date-item">
         <h3 class="text-center">{{list.date}}</h3>
         <div class="pd10">
-          <li
-            v-for="item in list.items"
-            :key="item.time"
-            class="flex list-item"
-          >
+          <li v-for="item in list.items" :key="item.time" class="flex list-item">
             <h4 class="flex-auto">{{item.text}}</h4>
             <span class="mg-r20">￥{{item.amount}}</span>
-            <span class="">{{item.time}}</span>
+            <span class>{{item.time}}</span>
           </li>
         </div>
       </ul>
     </cube-scroll>
   </div>
-
 </template>
 
 <script>
 export default {
   name: "RecallList",
-  data() {
+  data () {
     return {
       recallList: [
         {
@@ -144,14 +135,14 @@ export default {
     };
   },
   methods: {},
-  mounted() {
-    this.$nextTick(function() {
+  mounted () {
+    this.$nextTick(function () {
       setTimeout(() => {
         this.$refs.scroll.refresh();
       }, 0);
     });
   },
-  created() {}
+  created () { }
 };
 </script>
 
