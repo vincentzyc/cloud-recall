@@ -64,14 +64,14 @@ export default {
           break;
       }
     }
-  },
-  mounted() {
+  }
+  // mounted() {
     // this.$nextTick(function () {
     // window.addEventListener("load", () => {
     //     this.$refs.scroll.refresh();
     // });
     // });
-  }
+  // }
 };
 </script>
 
