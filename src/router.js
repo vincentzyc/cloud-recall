@@ -5,13 +5,17 @@ Vue.use(VueRouter)
 
 export default new VueRouter({
 	routes: [{
-			path: '/about',
-			name: 'about',
+			path: '/',
+			name: 'home',
+			component: () => import('./views/home.vue')
+		}, {
+			path: '/add',
+			name: 'add',
 			component: () => import('./views/about.vue')
 		},
 		{
-			path: '/button',
-			name: 'button',
+			path: '/expend',
+			name: 'expend',
 			component: () => import('./views/button.vue')
 		}
 	]

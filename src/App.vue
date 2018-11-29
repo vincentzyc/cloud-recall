@@ -1,25 +1,25 @@
 <template>
   <div id="app">
     <div class="app-content">
-      <RecallList/>
+      <router-view/>
       <footer class="flex footer align-middle">
         <div style="width:100%">
           <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="clickHandler"></cube-tab-bar>
         </div>
-        <div class="add-recall"></div>
+        <div class="add-recall" @click="addRecall()">
+          <div class="add-icon cubeic-close" :class="{active:isActive}"></div>
+        </div>
       </footer>
     </div>
   </div>
 </template>
 <script>
-// @ is an alias to /src
-import RecallList from "@/components/recall-list.vue";
 export default {
   name: "app",
-  data () {
+  data() {
     return {
-      tab_active: "recall",
-      selectedLabelDefault: "我的回忆",
+      isActive: false,
+      selectedLabelDefault: "",
       tabs: [
         {
           label: "我的回忆",
@@ -32,22 +32,46 @@ export default {
       ]
     };
   },
-  components: {
-    RecallList
+  watch: {
+    "$route"(n) {
+      switch (n.name) {
+        case "add":
+          this.isActive = true;
+          this.selectedLabelDefault = "";
+          break;
+        case "home":
+          this.isActive = false;
+          this.selectedLabelDefault = "我的回忆";
+          break;
+        case "expend":
+          this.isActive = false;
+          this.selectedLabelDefault = "支出统计";
+          break;
+      }
+    }
   },
   methods: {
-    clickHandler (label) {
-      // if you clicked home tab, then print 'Home'
-      console.log(label);
+    addRecall() {
+      this.$router.push("/add");
+    },
+    clickHandler(label) {
+      switch (label) {
+        case "我的回忆":
+          this.$router.push("/");
+          break;
+        case "支出统计":
+          this.$router.push("/expend");
+          break;
+      }
     }
+  },
+  mounted() {
+    // this.$nextTick(function () {
+    // window.addEventListener("load", () => {
+    //     this.$refs.scroll.refresh();
+    // });
+    // });
   }
-  // mounted() {
-  //     this.$nextTick(function() {
-  //         window.addEventListener("load", () => {
-  //             this.$refs.scroll.refresh();
-  //         });
-  //     });
-  // }
 };
 </script>
 
@@ -70,12 +94,8 @@ html {
 .border-r {
   border-right: 1px solid #dedede;
 }
-.active {
-  background: #666;
-  color: #fff;
-}
 .footer {
-  position: relative;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -88,12 +108,22 @@ html {
   position: absolute;
   bottom: 20px;
   left: 50%;
-  margin-left: -25px;
+  transform: translateX(-50%);
   width: 52px;
   height: 52px;
+  text-align: center;
+  line-height: 52px;
+  background: #fff;
   border: 1px solid #dedede;
   border-radius: 100%;
-  background: #fff url("./assets//img/add.png") no-repeat center center/36px
-    36px;
+}
+.add-icon {
+  transform: rotate(45deg);
+  font-weight: 900;
+  color: #666;
+  font-size: 36px;
+}
+.active {
+  color: #1e88d7;
 }
 </style>

@@ -9,6 +9,7 @@
             <span class="mg-r20">￥{{item.amount}}</span>
             <span class>{{item.time}}</span>
           </li>
+          <div class="text-center">当日总支出:￥{{list.items.reduce((total, val) => total + parseFloat(val.amount), 0)}}</div>
         </div>
       </ul>
     </cube-scroll>
@@ -18,7 +19,7 @@
 <script>
 export default {
   name: "RecallList",
-  data () {
+  data() {
     return {
       recallList: [
         {
@@ -134,15 +135,17 @@ export default {
       ]
     };
   },
-  methods: {},
-  mounted () {
+  methods: {
+
+  },
+  mounted() {
     this.$nextTick(function () {
       setTimeout(() => {
         this.$refs.scroll.refresh();
       }, 0);
     });
   },
-  created () { }
+  created() { }
 };
 </script>
 
