@@ -11,12 +11,12 @@ export default new VueRouter({
 		}, {
 			path: '/add',
 			name: 'add',
-			component: () => import('./views/about.vue')
+			component: () => import('./views/add.vue')
 		},
 		{
 			path: '/expend',
 			name: 'expend',
-			component: () => import('./views/button.vue')
+			component: () => import('./views/expend.vue')
 		}
 	]
 })
