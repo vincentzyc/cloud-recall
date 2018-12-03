@@ -6,9 +6,7 @@
         <div style="width:100%">
           <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="clickHandler"></cube-tab-bar>
         </div>
-        <div class="add-recall" @click="addRecall()">
-          <div class="add-icon cubeic-close" :class="{active:isActive}"></div>
-        </div>
+        <div class="add-recall cubeic-close" :class="{active:isActive}" @click="addRecall()"></div>
       </footer>
     </div>
   </div>
@@ -66,11 +64,11 @@ export default {
     }
   }
   // mounted() {
-    // this.$nextTick(function () {
-    // window.addEventListener("load", () => {
-    //     this.$refs.scroll.refresh();
-    // });
-    // });
+  // this.$nextTick(function () {
+  // window.addEventListener("load", () => {
+  //     this.$refs.scroll.refresh();
+  // });
+  // });
   // }
 };
 </script>
@@ -108,7 +106,6 @@ html {
   position: absolute;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%);
   width: 52px;
   height: 52px;
   text-align: center;
@@ -116,9 +113,7 @@ html {
   background: #fff;
   border: 1px solid #dedede;
   border-radius: 100%;
-}
-.add-icon {
-  transform: rotate(45deg);
+  transform: translateX(-50%) rotate(45deg);
   font-weight: 900;
   color: #666;
   font-size: 36px;

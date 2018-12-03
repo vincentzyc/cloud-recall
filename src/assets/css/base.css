@@ -18,10 +18,6 @@ a {
 li {
 	list-style: none;
 }
-h1, h2, h3, h4, h5, h6 {
-	font-size: 100%;
-	font-weight: 500
-}
 .container {
 	position: relative;
 }
@@ -216,6 +212,9 @@ h1, h2, h3, h4, h5, h6 {
 .clearfix:after {
 	clear: both;
 }
+.strong {
+	font-weight: bold;
+}
 .relative {
 	position: relative;
 }
@@ -263,6 +262,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .fs18 {
 	font-size: .36rem;
+}
+.fs20 {
+	font-size: .4rem;
 }
 .c000 {
 	color: #000;

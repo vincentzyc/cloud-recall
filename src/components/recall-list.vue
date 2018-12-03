@@ -7,7 +7,7 @@
           <li v-for="item in list.items" :key="item.time" class="flex list-item">
             <h4 class="flex-auto">{{item.text}}</h4>
             <span class="mg-r20">￥{{item.amount}}</span>
-            <span class>{{item.time}}</span>
+            <span>{{item.time}}</span>
           </li>
           <div class="text-center">当日总支出:￥{{list.items.reduce((total, val) => total + parseFloat(val.amount), 0)}}</div>
         </div>
