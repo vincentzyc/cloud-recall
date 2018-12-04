@@ -2,23 +2,42 @@
   <div class="add-page">
     <h3 class="text-center fs20 strong">{{formData.date}}</h3>
     <div class="bgfff">
-      <ul class="flex add-wrapper">
-        <li class="flex-auto input-text">
-          <input type="text" class="text-center col-12" placeholder="事项">
+      <ul class="add-wrapper">
+        <li v-for="(item,key) in formData.list" :key="key" class="flex row">
+          <input
+            type="text"
+            v-model="item.text"
+            class="input-text text-center"
+            placeholder="事项"
+            onfocus="this.classList.add('active')"
+            onblur="this.classList.remove('active')"
+          >
+          <input
+            type="number"
+            v-model="item.amount"
+            class="input-text text-center"
+            placeholder="花费"
+            onfocus="this.classList.add('active')"
+            onblur="this.classList.remove('active')"
+          >
+          <input
+            type="text"
+            v-model="item.time"
+            class="input-text text-center"
+            readonly
+            onfocus="this.classList.add('active')"
+            onblur="this.classList.remove('active')"
+            placeholder="时间"
+            @click="showTimeRangePicker(key)"
+          >
         </li>
-        <li>
-          <input type="number" class="text-center col-12" placeholder="花费">
-        </li>
-        <li @click="showTimeRangePicker">
-          <input type="text" class="text-center col-12" readonly onfocus="this.blur()" placeholder="时间">
-        </li>
+        <div class="text-center pd20">当日总支出:￥{{allAmount}}</div>
       </ul>
       <!-- <li v-for="item in list.items" :key="item.time" class="flex list-item">
           <h4 class="flex-auto">{{item.text}}</h4>
           <span class="mg-r20">￥{{item.amount}}</span>
           <span class>{{item.time}}</span>
       </li>-->
-      <!-- <div class="text-center">当日总支出:￥{{listItems.reduce((total, val) => total + parseFloat(val.amount), 0)}}</div> -->
     </div>
   </div>
 </template>
@@ -51,14 +70,26 @@ const dateSegmentData = [
 export default {
   data() {
     return {
+      listIndex: "",
       formData: {
         date: this.$api.getFormatDate("yyyy-mm-dd"),
-        listItems: []
+        list: [{
+          text: "",
+          amount: "",
+          time: ""
+        }]
       }
     }
   },
+  computed: {
+    allAmount() {
+      let total = this.formData.list.reduce((total, val) => total + parseFloat(val.amount), 0);
+      return total ? total : 0;
+    }
+  },
   methods: {
-    showTimeRangePicker() {
+    showTimeRangePicker(key) {
+      this.listIndex = key;
       this.timeRangePicker.show()
     }
   },
@@ -67,11 +98,12 @@ export default {
       this.timeRangePicker = this.$createSegmentPicker({
         data: dateSegmentData,
         onSelect: (selectedDates, selectedVals, selectedTexts) => {
-          this.$createDialog({
-            type: 'warn',
-            content: `Selected Items: <br/> - 开始时间: ${selectedTexts[0].join('')} <br/> - 结束时间: ${selectedTexts[1].join('')}`,
-            icon: 'cubeic-alert'
-          }).show()
+          this.formData.list[this.listIndex].time = selectedVals;
+          // this.$createDialog({
+          //   type: 'warn',
+          //   content: `Selected Items: <br/> - 开始时间: ${selectedTexts[0].join('')} <br/> - 结束时间: ${selectedTexts[1].join('')}`,
+          //   icon: 'cubeic-alert'
+          // }).show()
         },
         onNext: (i, selectedDate, selectedValue, selectedText) => {
           dateSegmentData[1].min = selectedDate
@@ -91,10 +123,17 @@ export default {
 
   .add-wrapper {
     margin: 15px 0;
-    padding: 10px 0;
   }
 
   .input-text {
+    width: 33.3333%;
+    transition: 0.3s;
+    padding: 10px 0;
+    border: 1px solid #eee;
+  }
+
+  .input-text.active {
+    width: 100%;
   }
 }
 </style>

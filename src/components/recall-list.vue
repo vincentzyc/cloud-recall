@@ -5,9 +5,9 @@
         <h3 class="text-center">{{list.date}}</h3>
         <div class="pd10">
           <li v-for="item in list.items" :key="item.time" class="flex list-item">
-            <h4 class="flex-auto">{{item.text}}</h4>
-            <span class="mg-r20">￥{{item.amount}}</span>
-            <span>{{item.time}}</span>
+            <h4 class="col-6">{{item.text}}</h4>
+            <span class="col-2">￥{{item.amount}}</span>
+            <span class="col-4">{{item.time}}</span>
           </li>
           <div class="text-center">当日总支出:￥{{list.items.reduce((total, val) => total + parseFloat(val.amount), 0)}}</div>
         </div>
@@ -163,6 +163,7 @@ export default {
   margin-top: 10px;
 }
 .list-item {
+  width: 100%;
   padding: 10px;
   background: #ededed;
   margin-bottom: 10px;

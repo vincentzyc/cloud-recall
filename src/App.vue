@@ -73,13 +73,7 @@ export default {
 };
 </script>
 
-<style>
-#app,
-body,
-html {
-  height: 100%;
-  z-index: 0;
-}
+<style scoped>
 .app-content {
   position: absolute;
   top: 0;
@@ -88,9 +82,6 @@ html {
   height: 100%;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-}
-.border-r {
-  border-right: 1px solid #dedede;
 }
 .footer {
   position: fixed;
