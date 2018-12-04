@@ -3,7 +3,7 @@
     <h3 class="text-center fs20 strong">{{formData.date}}</h3>
     <div class="bgfff">
       <ul class="add-wrapper">
-        <li v-for="(item,key) in formData.list" :key="key" class="flex row">
+        <li v-for="(item,key) in formData.list" :key="key" class="flex row mg-b10">
           <input
             type="text"
             v-model="item.text"
@@ -25,20 +25,19 @@
             v-model="item.time"
             class="input-text text-center"
             readonly
-            onfocus="this.classList.add('active')"
-            onblur="this.classList.remove('active')"
+            onfocus="this.blur()"
             placeholder="时间"
             @click="showTimeRangePicker(key)"
           >
         </li>
-        <div class="text-center pd20">当日总支出:￥{{allAmount}}</div>
+        <div class="text-center pd20 relative fs16">
+          <i class="cubeic-remove removeicon" @click="deleteEvent()"></i>
+          <span>当日总支出:￥{{allAmount}}</span>
+          <i class="cubeic-add addicon" @click="addEvent()"></i>
+        </div>
       </ul>
-      <!-- <li v-for="item in list.items" :key="item.time" class="flex list-item">
-          <h4 class="flex-auto">{{item.text}}</h4>
-          <span class="mg-r20">￥{{item.amount}}</span>
-          <span class>{{item.time}}</span>
-      </li>-->
     </div>
+    <cube-button :primary="true">保 存</cube-button>
   </div>
 </template>
 <script>
@@ -83,14 +82,30 @@ export default {
   },
   computed: {
     allAmount() {
-      let total = this.formData.list.reduce((total, val) => total + parseFloat(val.amount), 0);
-      return total ? total : 0;
+      return this.formData.list.reduce((total, val) => total + parseFloat(val.amount === "" ? 0 : val.amount), 0);
     }
   },
   methods: {
+    addEvent() {
+      this.formData.list.push({
+        text: "",
+        amount: "",
+        time: ""
+      })
+    },
+    deleteEvent() {
+      this.formData.list.pop()
+    },
     showTimeRangePicker(key) {
       this.listIndex = key;
       this.timeRangePicker.show()
+    },
+    formatTime(arr) {
+      let t1 = arr[0][0] < 10 ? "0" + arr[0][0] : arr[0][0];
+      let t2 = arr[0][1] < 10 ? "0" + arr[0][1] : arr[0][1];
+      let t3 = arr[1][0] < 10 ? "0" + arr[1][0] : arr[1][0];
+      let t4 = arr[1][1] < 10 ? "0" + arr[1][1] : arr[1][1];
+      return `${t1}:${t2}-${t3}:${t4}`;
     }
   },
   mounted() {
@@ -98,12 +113,7 @@ export default {
       this.timeRangePicker = this.$createSegmentPicker({
         data: dateSegmentData,
         onSelect: (selectedDates, selectedVals, selectedTexts) => {
-          this.formData.list[this.listIndex].time = selectedVals;
-          // this.$createDialog({
-          //   type: 'warn',
-          //   content: `Selected Items: <br/> - 开始时间: ${selectedTexts[0].join('')} <br/> - 结束时间: ${selectedTexts[1].join('')}`,
-          //   icon: 'cubeic-alert'
-          // }).show()
+          this.formData.list[this.listIndex].time = this.formatTime(selectedVals);
         },
         onNext: (i, selectedDate, selectedValue, selectedText) => {
           dateSegmentData[1].min = selectedDate
@@ -119,6 +129,7 @@ export default {
 <style lang="stylus" scoped>
 .add-page {
   padding: 10px;
+  margin-bottom: 50px;
   background: #f2f2f2;
 
   .add-wrapper {
@@ -134,6 +145,24 @@ export default {
 
   .input-text.active {
     width: 100%;
+  }
+
+  .addicon {
+    position: absolute;
+    right: 15px;
+    top: 5px;
+    color: #666;
+    font-size: 24px;
+    padding: 10px;
+  }
+
+  .removeicon {
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    color: #666;
+    font-size: 24px;
+    padding: 10px;
   }
 }
 </style>
