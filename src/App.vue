@@ -4,7 +4,7 @@
       <router-view/>
       <footer class="flex footer align-middle">
         <div style="width:100%">
-          <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="clickHandler"></cube-tab-bar>
+          <cube-tab-bar v-model="selectedLabel" :data="tabs" @click="clickHandler"></cube-tab-bar>
         </div>
         <div class="add-recall cubeic-calendar" :class="{active:isActive}" @click="addRecall()"></div>
       </footer>
@@ -17,7 +17,7 @@ export default {
   data() {
     return {
       isActive: false,
-      selectedLabelDefault: "",
+      selectedLabel: "",
       tabs: [
         {
           label: "我的回忆",
@@ -35,15 +35,15 @@ export default {
       switch (n.name) {
         case "add":
           this.isActive = true;
-          this.selectedLabelDefault = "";
+          this.selectedLabel = "";
           break;
         case "home":
           this.isActive = false;
-          this.selectedLabelDefault = "我的回忆";
+          this.selectedLabel = "我的回忆";
           break;
         case "expend":
           this.isActive = false;
-          this.selectedLabelDefault = "支出统计";
+          this.selectedLabel = "支出统计";
           break;
       }
     }
