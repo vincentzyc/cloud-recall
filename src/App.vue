@@ -6,7 +6,7 @@
         <div style="width:100%">
           <cube-tab-bar v-model="selectedLabelDefault" :data="tabs" @click="clickHandler"></cube-tab-bar>
         </div>
-        <div class="add-recall cubeic-close" :class="{active:isActive}" @click="addRecall()"></div>
+        <div class="add-recall cubeic-calendar" :class="{active:isActive}" @click="addRecall()"></div>
       </footer>
     </div>
   </div>
@@ -104,10 +104,10 @@ export default {
   background: #fff;
   border: 1px solid #dedede;
   border-radius: 100%;
-  transform: translateX(-50%) rotate(45deg);
+  transform: translateX(-50%);
   font-weight: 900;
   color: #666;
-  font-size: 36px;
+  font-size: 27px;
 }
 .active {
   color: #1e88d7;

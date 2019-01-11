@@ -71,7 +71,7 @@ export default {
     return {
       listIndex: "",
       formData: {
-        date: this.$api.getFormatDate("yyyy-mm-dd"),
+        date: this.$util.getFormatDate("yyyy-mm-dd"),
         list: [{
           text: "",
           amount: "",
